@@ -1,0 +1,50 @@
+﻿@model DAS.Models.apt
+
+@{
+    ViewBag.Title = "Appointment";
+}
+
+<h2>Pay us a Visit </h2>
+<div>
+    <style type="text/css">
+        body {
+            background-image: url('/images/appt.jpeg');
+            /*background-repeat: no-repeat;
+               background-attachment: fixed;*/
+
+            background-size: cover;
+            margin: 0;
+        }
+    </style>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <center>
+        <div>
+            <label for="adate"><b>Pick a date  :</b></label>
+            @Html.EditorFor(model => model.adate, new { htmlAttributes = new { @class = "form-control" } })
+            <br />
+            @Html.TextBoxFor(model => model.name, new { @class = "form-control", @placeholder = "Name" })
+            <br />
+            @Html.TextBoxFor(model => model.surname, new { @class = "form-control", @placeholder = "Surname" })
+            <br />
+
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Email Address" })
+            <br />
+
+            @Html.TextBoxFor(model => model.phoneno, new { @class = "form-control", @placeholder = "Contact Number" })
+            <br />
+            @Html.TextBoxFor(model => model.message, new { @class = "form-control", @placeholder = "Message" })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+
+                </div>
+            </div>
+        </div>
+        <p style=" font-size :xx-large"><b> @ViewBag.SuccessMessage</b></p>
+    </center>
+
+}
